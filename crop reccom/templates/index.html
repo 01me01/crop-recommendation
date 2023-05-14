@@ -1,0 +1,97 @@
+<html>
+    <head>
+         <title>crop recommendation</title>
+         <style>
+            body{background-image: linear-gradient(to bottom right, hsl(357, 34%, 46%),rgb(125, 52, 52), rgb(112, 0, 24));
+                padding: 50px;}
+            h1,h3{  font-family: "Times New Roman", Times, serif;
+                color:black;
+            }
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                width: 100%;
+                background-color: rgb(255, 255, 255);
+                text-align: center;
+                display: flex;
+                border-radius: 20px;
+
+                }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                }
+
+            .container {
+                padding: 2px 16px;
+                flex: 50%;
+                
+                }
+            input{padding: 10px 15%;
+                text-align: left;
+                background-color: rgb(255, 255, 255);
+                border: none;
+                border-bottom: 2px solid black;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 18px;
+                margin: 0;
+                outline: none;}
+           
+            .pic{
+                flex: 50%;
+            }
+            img{
+                background-position: left;
+                background-repeat: no-repeat;
+                height:100%;
+                align-items: left;
+                margin: 0;
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+                width:100%;
+                object-fit: cover; 
+                border-radius: 20px;
+
+            }
+            button{
+                color: black;
+                border: none;
+            background-color: hsl(357, 39%, 40%);
+            padding: 16px 40px;
+            text-decoration: none;
+            margin: 4px 2px;
+                cursor: pointer;
+            border-radius: 20px;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            }
+         </style>
+    </head>
+    <body>
+        
+        <div id="bg">
+            <div class="card">
+                <div class="pic">
+                     <img src="croppic.jpg"  />
+                </div>
+                <div class="container">
+                    <h1>CROP RECOMMENDATION SYSTEM<h1>
+                    <h2>ENTER THE FOLLOWING VALUES TO PREDICT THE BEST CROP TO BE SOWN<h2>
+
+                    <form action="{{ url_for('predict')}}"method="post">
+                        <input type="text" name="nitrogen" placeholder="Nitrogen" required="required" /><br></br>
+                        <input type="text" name="phosphorus" placeholder="Phosphorus" required="required" /><br></br>
+                        <input type="text" name="Potassium" placeholder="Potassium" required="required" /><br></br>
+                        <input type="text" name="temperature" placeholder="Temperature" required="required" /><br></br>
+                        <input type="text" name="Humidity" placeholder="Humidity" required="required" /><br></br>
+                        <input type="text" name="pH" placeholder="pH" required="required" /><br></br>
+                        <input type="text" name="rainfall" placeholder="rainfall" required="required" /><br></br>
+
+                        <b><button type='submit' class='btn'>Predict</button></b>
+                    </form>
+                    {{prediction_text}}
+                </div>
+            </div>
+         </div>
+    </body>
+</html>
